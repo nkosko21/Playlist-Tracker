@@ -1,7 +1,8 @@
-var CLIENT_ID = "deb59141bd794a7cbb6acdaa7b93a8dd";
+import { get_playlist_info } from './getPlaylistInfo.js';
 // var CLIENT_SECRET = process.env.CLIENT_SECRET;
 var port = 9000
 var redirect_uri = `http://localhost:${port}/login`;
+var CLIENT_SECRET = "9e835004534e4961bea8b90cd0458ec1"
 
 export function login(req, res){
   let code
@@ -33,6 +34,8 @@ export function login(req, res){
     .then(data => {
       var access_token = data.access_token
       var refresh_token = data.refresh_token
+
+      get_playlist_info(req, res, access_token)
     })
     .catch(error => {
       console.error('Error getting access token:', error);
