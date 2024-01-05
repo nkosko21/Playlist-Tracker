@@ -1,5 +1,7 @@
 var CLIENT_ID = "deb59141bd794a7cbb6acdaa7b93a8dd";
 // var CLIENT_SECRET = process.env.CLIENT_SECRET;
+var CLIENT_SECRET = "9e835004534e4961bea8b90cd0458ec1"
+var redirect_uri = `http://localhost:9000/login`;
 
 var LBM_ID = "3vfeQizQm0ah4ZXatQ1SRq"
 var HBM_ID = "137owd2lyOGYdv3Pq4zsit"
@@ -76,6 +78,7 @@ function simplify_track_data(long_tracklist) {
   var simple_tracklist = []
 
   long_tracklist.map((item) => {
+    console.log(item["track"]["album"]["images"])
     simple_tracklist.push({
       name: item["track"]["name"], 
       duration: msToMinSec(item["track"]["duration_ms"]), 
